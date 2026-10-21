@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tests in the NHS App: idea feeds (sketches)</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#ececec;font-family:"Helvetica Neue",Arial,sans-serif;color:#333}
+header{padding:24px 32px 8px}
+h1{margin:0 0 6px;font-size:28px;color:#555}
+nav a{margin-right:16px;color:#005eb8;font-size:14px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 4px;font-size:13px;align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px;background:#fff;padding:4px 8px;border:1px solid #ccc}
+.filters{margin:10px 0 0;display:flex;gap:8px;flex-wrap:wrap}
+.filters button{border:1px solid #999;background:#fff;padding:6px 12px;cursor:pointer;font-size:13px}
+.filters button.on{background:#333;color:#fff;border-color:#333}
+.board{margin:20px 32px 28px;background:#ececec;border-top:2px solid #d0d0d0;padding-top:18px}
+.board h2{font-size:26px;color:#555;margin:0 0 4px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.rank{font-size:14px;background:#555;color:#fff;border-radius:50%;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center}
+.feas{font-size:13px;font-weight:bold;padding:4px 10px;border-radius:14px}
+.f-high{background:#7fd1d8}.f-med{background:#c7b3f0}.f-low{background:#f7b9a6}
+.row{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+.title{background:#f5a623;width:170px;min-height:92px;padding:14px;font-size:16px;color:#222;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:1px 2px 0 rgba(0,0,0,.08);flex:none}
+.summary{max-width:520px;font-size:14px;line-height:1.45;color:#444;align-self:center}
+.screens{display:flex;gap:40px;flex-wrap:wrap;margin-top:18px;align-items:flex-start}
+.screen{position:relative}
+.screen .bar{background:#f6f6f6;text-align:center;font-size:19px;color:#444;padding:4px 0;margin-bottom:10px}
+.cols{display:flex;gap:14px;align-items:flex-start}
+.col{width:150px;display:flex;flex-direction:column;gap:8px}
+.h{background:#2b9ae0;color:#fff;font-weight:bold;font-size:13px;min-height:40px;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;position:relative}
+.h.changed{background:#a98bea}
+.h.new{background:#a98bea;outline:3px solid #7b3fc4}
+.h.gone{background:#bbb;text-decoration:line-through}
+.c{background:#fff;border:1px solid #bbb;color:#2b9ae0;font-weight:bold;font-size:12.5px;min-height:40px;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;position:relative}
+.c.new{color:#7b3fc4}
+.c.gone{color:#999;text-decoration:line-through;background:#f3f3f3}
+.c.cond{border:2px dashed #7b3fc4}
+.c.prompt{background:#fff8e1;border:2px solid #f5a623;color:#8a5a00}
+.c.sub{font-size:11.5px;min-height:30px;margin-left:12px;font-weight:normal}
+.c .tags{display:block;margin-top:4px}
+.tag{display:inline-block;font-size:10px;font-weight:normal;color:#333;padding:1px 5px;margin:1px;border-radius:8px}
+.t-home{background:#fff176}.t-ph{background:#a5d6a7}.t-gp{background:#90caf9}
+.banner{background:#7b3fc4;color:#fff;font-weight:bold;font-size:13px;padding:10px 12px;margin-bottom:10px;text-align:center;position:relative}
+.sticky{background:#fff176;font-size:10.5px;line-height:1.3;padding:7px;width:110px;box-shadow:1px 2px 2px rgba(0,0,0,.15);color:#333}
+.sticky.pin{width:auto;margin:-4px 0 0 18px;transform:rotate(-1.5deg)}
+.push{width:80px;height:80px;font-size:10px;border-radius:50%;background:#e05050;color:#fff;font-size:9.5px;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;flex:none}
+.flow{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-top:22px}
+.stage{display:flex;flex-direction:column;gap:6px}
+.stage .lbl{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.04em}
+.arrow{width:34px;text-align:center;color:#555;font-size:22px}
+.notes{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.notes .sticky{width:150px;font-size:11.5px}
+.notes .sticky.risk{background:#ffc9c9}
+.mid{display:flex;align-items:center;gap:10px}
+footer{padding:10px 32px 40px;font-size:12px;color:#777}
+</style></head><body>
+<header>
+<h1>Tests in the NHS App: idea feeds</h1>
+<nav><a href="network.html">&larr; Connected pathways map</a><a href="index.html">Tree view</a><a href="endpoints.html">By end point</a></nav>
+<div class="legend">
+<span><i style="width:16px;height:12px;background:#2b9ae0;display:inline-block"></i>As-is section</span>
+<span><i style="width:16px;height:12px;background:#a98bea;display:inline-block"></i>New or changed section</span>
+<span style="color:#2b9ae0;font-weight:bold">As-is link</span>
+<span style="color:#7b3fc4;font-weight:bold">New or changed link</span>
+<span style="border:2px dashed #7b3fc4">Only shown if eligible</span>
+<span style="background:#fff8e1;border:2px solid #f5a623">Prompt</span>
+<span style="text-decoration:line-through;color:#999">Moved or removed</span>
+<span style="background:#fff176">Note</span>
+<span style="background:#ffc9c9">Risk</span>
+<span><i style="width:12px;height:12px;border-radius:50%;background:#e05050;display:inline-block"></i>Push or message</span>
+</div>
+<div class="filters" id="filters">
+<button data-f="all" class="on">All</button><button data-f="high">High feasibility</button><button data-f="med">Medium</button><button data-f="low">Low</button>
+</div>
+</header>
+<main id="main"></main>
+<footer>Sketches built from the "Tests" workshop feasibility table. Ordered from most to least feasible.</footer>
+<script>
+const AS_IS = {
+  tr:{h:'Test results',cards:[{t:'Single feed of results',k:'new'}]},
+  vac:{h:'Vaccinations',cards:[{t:'Check and book vaccinations'},{t:'Your vaccinations'},{t:'COVID-19 vaccinations'}]},
+  hc:{h:'Health conditions',cards:[{t:'Allergies and adverse reactions'},{t:'All health conditions'}]},
+  doc:{h:'Documents',cards:[{t:'GP documents'},{t:'Hospital and specialist documents and questionnaires'},{t:'Useful links from your health team'}]},
+  other:{h:'Other stuff',cards:[{t:'NHS Health Check online'},{t:'Record your symptoms'},{t:'Care plans'},{t:'Tests and treatments A to Z'}]}
+};
+const tags = (...x)=>x;
+const IDEAS = [
+{id:'asis',rank:'',feas:'',title:'As-is plus combined feeds',summary:'Where test-related content sits in the NHS App today.',
+ screens:[{name:'Home',cols:[AS_IS.tr,AS_IS.vac,AS_IS.hc,AS_IS.doc]},{name:'Elsewhere',cols:[AS_IS.other]}],
+ notes:[{t:'Record your symptoms sits in Health choices, but it is unclear what it is'}]},
+
+{id:'i1',rank:1,feas:'high',feasLabel:'High (shorter term). Longer term more questionable',title:'Update the existing Test results section',
+ summary:'Turn Test results into a "Health data and results" sub-hub. It could include information like measurements. Other apps do something similar with a Test results tile and a medical history timeline.',
+ screens:[{name:'Home',cols:[
+  {h:'Health data and results',k:'changed',cards:[{t:'Results timeline',k:'new'},{t:'Measurements',k:'new',note:'e.g. height, weight, blood pressure'},{t:'Screening results',k:'new',note:'Unclear: here or separate?'}]},
+  AS_IS.vac,AS_IS.hc,AS_IS.doc]}],
+ notes:[{t:'Graphing marked out of scope'},{t:'Unclear whether screening results sit here or separately',r:1},{t:'Longer term feasibility in question due to scalability',r:1}]},
+
+{id:'i2',rank:2,feas:'high',title:'User-driven "I need a test" flow',
+ summary:'A self-initiated "Get a test" journey inside Tests, similar to Frankie\'s prototype. The user picks a test, then chooses how to get it. If a test has no transactional journey, or the user is not eligible, they see useful information instead.',
+ screens:[{name:'Home',cols:[
+  {h:'Tests',k:'changed',cards:[{t:'Results'},{t:'Get a test',k:'new'}]},AS_IS.vac,AS_IS.hc,AS_IS.doc]}],
+ flow:[
+  {lbl:'1. Get a test',cards:[{t:'Get a test',k:'new'}]},
+  {lbl:'2. Pick a test',cards:['Blood pressure','Bowel','Breast','Cervical','Chlamydia','COVID-19','HIV','Hepatitis C','Kidney function'].map(t=>({t,k:'new',s:1}))},
+  {lbl:'3. Choose how',cards:[{t:'Self-test kit by post',k:'new',tags:['home']},{t:'Walk-in pharmacy',k:'new',tags:['ph']},{t:'GP appointment',k:'new',tags:['gp']},{t:'Not eligible or no online journey',k:'cond'}]},
+  {lbl:'Fallback',cards:[{t:'Read information about the test',k:'new'}]}],
+ notes:[{t:'Users search for the test or condition themselves'},{t:'Suggest splitting short-term or acute tests from longer-term monitoring'},{t:'Users may have very high expectations of what this section lets them do',r:1},{t:'May funnel in too many users',r:1},{t:'Too easy to self-serve too much? Risk of over-screening',r:1}]},
+
+{id:'i3',rank:3,feas:'high',title:'Expand the profile hub',
+ summary:'Add measurements (height, weight and so on), health checks, care plans and allergies to the profile. The profile becomes a place for health monitoring.',
+ screens:[{name:'Home',cols:[AS_IS.tr,AS_IS.vac,AS_IS.hc,AS_IS.doc]},
+  {name:'Profile',cols:[{h:'Profile',k:'changed',cards:[{t:'Measurements',k:'new',note:'Height, weight, blood pressure'},{t:'Health checks',k:'new'},{t:'Care plans',k:'new'},{t:'Allergies',k:'new'},{t:'Vaccinations (with eligibility)',k:'new'}]}]}],
+ notes:[{t:'More significant changes to the profile'},{t:'Vaccinations could be added, with eligibility shown'},{t:'Only accounts for measurements, with less focus on test results',r:1}]},
+
+{id:'i4',rank:4,feas:'high',title:'Rejig pages and information',
+ summary:'Move health conditions and allergies into the profile. Organise information by how often it changes: stable data like height lives in the profile ("About me"), and changing data is reached from home.',
+ screens:[{name:'Home (changing data)',cols:[AS_IS.tr,AS_IS.vac,{h:'Health conditions',k:'gone',cards:[{t:'Moved to profile',k:'gone'}]},AS_IS.doc]},
+  {name:'Profile: About me (stable data)',cols:[{h:'About me',k:'changed',cards:[{t:'Height and weight',k:'new'},{t:'Health conditions',k:'new'},{t:'Allergies and adverse reactions',k:'new'}]}]}],
+ notes:[{t:'Mainly reorganising existing content rather than building new features'}]},
+
+{id:'i5',rank:5,feas:'med',title:'Eligibility-based hidden sub-hubs and cards on the home screen',
+ summary:'Screening appears on the home page as a card only if the user is eligible. This is automated from date of birth, and a clinician can force it to show. Screening options inside are filtered by eligibility.',
+ screens:[{name:'Home',cols:[AS_IS.tr,
+  {h:'Screening',k:'new',note:'Only shown if eligible',cards:[{t:'Bowel screening',k:'cond'},{t:'Breast screening',k:'cond'},{t:'Cervical screening',k:'cond'},{t:'AAA screening',k:'cond'}]},
+  AS_IS.vac,AS_IS.hc,AS_IS.doc]}],
+ notes:[{t:'Automated from date of birth. A clinician can force it to show'},{t:'Only a certain % of people are eligible at any time'},{t:'"Personalisation works well for screening." A good use case for USI'},{t:'Best protection against over-screening and health anxiety'},{t:'Depends on having the eligibility data',r:1}]},
+
+{id:'i6',rank:6,feas:'med',title:'Personalised, service-driven "You need a test"',
+ summary:'Clinician- or invite-initiated. A push notification or message deep links to the tests the user can do. There is also a banner at the top of the page.',
+ screens:[{name:'Home',banner:'You\'re eligible for cervical screening. Book now',cols:[
+  {h:'Tests',k:'changed',cards:[{t:'Results'},{t:'Tests you can do',k:'new'},{t:'HPV',k:'cond',s:1},{t:'Cervical',k:'cond',s:1},{t:'Breast',k:'cond',s:1},{t:'Bowel',k:'cond',s:1},{t:'PSA',k:'cond',s:1}]},
+  AS_IS.vac,AS_IS.hc,AS_IS.doc]}],
+ push:'Push or message with a deep link to Tests',
+ notes:[{t:'Prevents over-screening, extra spending and burden, because visibility increases'},{t:'Banner blindness: users may miss it',r:1}]},
+
+{id:'i7',rank:7,feas:'med',title:'Dynamic "time for your test" prompts',
+ summary:'Show users when it is time for a particular test. This idea is inferred from the notes.',
+ screens:[{name:'Home',cols:[
+  {h:'Test results',cards:[{t:'It\'s time for your blood pressure check',k:'prompt'},{t:'Single feed of results'}]},
+  {h:'Vaccinations',cards:[{t:'Your flu vaccine is due',k:'prompt'},...AS_IS.vac.cards]},AS_IS.hc,AS_IS.doc]}],
+ notes:[{t:'Overlaps with ideas 5 and 6'},{t:'Depends on eligibility data',r:1}]},
+
+{id:'i8',rank:8,feas:'med',title:'List of available tests, organised by condition',
+ summary:'A list of available tests, grouped by condition (for example STIs, blood pressure and cholesterol). Each one shows where you can get it: home, GP or pharmacy.',
+ screens:[{name:'Home',cols:[{h:'Tests',k:'changed',cards:[{t:'Results'},{t:'Available tests',k:'new'}]},AS_IS.vac,AS_IS.hc,AS_IS.doc]}],
+ flow:[
+  {lbl:'Available tests',cards:[{t:'Available tests',k:'new'}]},
+  {lbl:'STIs',cards:[{t:'Chlamydia',k:'new',tags:['home','gp']},{t:'HIV',k:'new',tags:['home','gp']},{t:'Hepatitis C',k:'new',tags:['home']}]},
+  {lbl:'Heart and circulation',cards:[{t:'Blood pressure',k:'new',tags:['ph','gp']},{t:'Cholesterol',k:'new',tags:['gp']}]},
+  {lbl:'Infections',cards:[{t:'COVID-19',k:'new',tags:['home','ph']}]}],
+ notes:[{t:'Simple idea'},{t:'Could add a lot of pages and confuse users',r:1},{t:'Over-exposes test types to users who do not need them',r:1}]},
+
+{id:'i9',rank:9,feas:'low',title:'Changes to the home screen (prevention focus)',
+ summary:'Keep prevention separate from results on the home screen. Add a Prevention hub (Testing, Screening, Vaccines), a "Staying healthy" sub-hub and a "You may be eligible for a test" prompt. Pull in online health checks, DTx and Better Health. Possibly remove health conditions from the home screen.',
+ screens:[{name:'Home',cols:[
+  {h:'Results',cards:[{t:'Single feed of results'}]},
+  {h:'Prevention',k:'new',cards:[{t:'You may be eligible for a test',k:'prompt'},{t:'Testing',k:'new'},{t:'Screening',k:'new'},{t:'Vaccines',k:'new'}]},
+  {h:'Staying healthy',k:'new',cards:[{t:'NHS Health Check online',k:'new'},{t:'Digital therapeutics (DTx)',k:'new'},{t:'Better Health',k:'new'}]},
+  {h:'Health conditions',k:'gone',cards:[{t:'Possibly removed from home',k:'gone'}]},AS_IS.doc]}],
+ notes:[{t:'A large change to the home screen',r:1}]},
+
+{id:'i10',rank:10,feas:'low',title:'Health prevention and tracking hub (Tests, Screening, Monitoring)',
+ summary:'One "Health tracking" card or new home tiles, split into three sub-hubs. This includes self-reported data (blood pressure, glucose, weight) shared with the GP. This idea is inferred from the notes.',
+ screens:[{name:'Home',cols:[{h:'Health tracking',k:'new',cards:[{t:'One card or three tiles?',k:'prompt'}]}]},
+  {name:'Health tracking',cols:[
+  {h:'Tests',k:'new',cards:[{t:'Search tests',k:'new'},{t:'Clinician-ordered',k:'new'},{t:'User-ordered',k:'new'},{t:'Results',k:'new'}]},
+  {h:'Screening',k:'new',cards:[{t:'Eligible (proactive)',k:'cond'},{t:'Invited (clinician-requested, dynamic)',k:'new'}]},
+  {h:'Monitoring',k:'new',cards:[{t:'Active clinician monitoring',k:'new'},{t:'Monitor my data',k:'new'},{t:'Request monitoring',k:'new'},{t:'Self-reported BP, glucose and weight, shared with GP',k:'new'}]}]}],
+ notes:[{t:'"Potentially beyond scope? But aligned with strategy?"',r:1},{t:'Should Tests, Screening and Monitoring be separate sub-hubs or one card?'}]},
+
+{id:'i11',rank:11,feas:'low',title:'Location-based services',
+ summary:'Find nearby pharmacies or services from inside the app flow.',
+ screens:[{name:'Home',cols:[{h:'Tests',k:'changed',cards:[{t:'Results'},{t:'Order a test',k:'new'}]},AS_IS.vac,AS_IS.hc,AS_IS.doc]}],
+ flow:[{lbl:'Order a test',cards:[{t:'Order a test',k:'new'}]},
+  {lbl:'Near you',cards:[{t:'📍 Pharmacies near you',k:'new',tags:['ph']},{t:'📍 Sexual health clinics near you',k:'new',tags:['gp']},{t:'📍 Opticians near you',k:'new'}]}],
+ notes:[{t:'Marked "out of scope?"',r:1}]}
+];
+
+const TAGL={home:['t-home','Home'],ph:['t-ph','Pharmacy'],gp:['t-gp','GP / clinic']};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function card(c){
+  const tg=c.tags?`<span class="tags">${c.tags.map(x=>`<span class="tag ${TAGL[x][0]}">${TAGL[x][1]}</span>`).join('')}</span>`:'';
+  const n=c.note?`<div class="sticky pin">${esc(c.note)}</div>`:'';
+  return `<div class="c ${c.k||''} ${c.s?'sub':''}"><span>${esc(c.t)}${tg}</span></div>${n}`;
+}
+function col(c){
+  const n=c.note?`<div class="sticky pin">${esc(c.note)}</div>`:'';
+  return `<div class="col"><div class="h ${c.k||''}">${esc(c.h)}</div>${n}${c.cards.map(card).join('')}</div>`;
+}
+const FL={high:['f-high','High feasibility'],med:['f-med','Medium feasibility'],low:['f-low','Low feasibility']};
+document.getElementById('main').innerHTML=IDEAS.map(i=>`
+<section class="board" data-f="${i.feas||'asis'}">
+ <h2>${i.rank?`<span class="rank">${i.rank}</span>Idea ${i.rank}`:'Current state'}${i.feas?`<span class="feas ${FL[i.feas][0]}">${esc(i.feasLabel||FL[i.feas][1])}</span>`:''}</h2>
+ <div class="row"><div class="title">${esc(i.title)}</div><div class="summary">${esc(i.summary)}</div></div>
+ <div class="screens">${i.push?`<div class="mid" style="align-self:center"><div class="push">${esc(i.push)}</div><span class="arrow">&rarr;</span></div>`:''}
+ ${i.screens.map(s=>`<div class="screen"><div class="bar">${esc(s.name)}</div>${s.banner?`<div class="banner">${esc(s.banner)}</div>`:''}<div class="cols">${s.cols.map(col).join('')}</div></div>`).join('')}</div>
+ ${i.flow?`<div class="flow">${i.flow.map((st,ix)=>`${ix?'<span class="arrow">&rarr;</span>':''}<div class="stage"><span class="lbl">${esc(st.lbl)}</span><div class="col">${st.cards.map(card).join('')}</div></div>`).join('')}</div>`:''}
+ <div class="notes">${i.notes.map(n=>`<div class="sticky ${n.r?'risk':''}">${esc(n.t)}</div>`).join('')}</div>
+</section>`).join('');
+document.getElementById('filters').addEventListener('click',e=>{
+  const f=e.target.dataset.f;if(!f)return;
+  document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('on',b===e.target));
+  document.querySelectorAll('.board').forEach(b=>b.style.display=(f==='all'||b.dataset.f===f||b.dataset.f==='asis')?'':'none');
+});
+</script>
+</body></html>
