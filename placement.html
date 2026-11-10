@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Where users placed each test: card sort</title><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f0f4f5;color:#212b32}
+header{background:#005eb8;color:#fff;padding:18px 24px}header h1{margin:0;font-size:24px}header p{margin:6px 0 0;font-size:14px}
+nav{padding:10px 24px;background:#fff;border-bottom:1px solid #d8dde0}nav a{color:#005eb8;margin-right:18px;font-size:14px}
+main{max-width:1150px;margin:0 auto;padding:20px 24px}
+.info{background:#fff;border:1px solid #d8dde0;padding:12px 16px;font-size:14px;line-height:1.5;margin-bottom:14px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:14px}
+th,td{border:1px solid #d8dde0;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#005eb8;color:#fff;position:sticky;top:0}
+tr.grp td{background:#e8edee;font-weight:bold;font-size:15px}
+td.t{font-weight:bold;width:22%}
+td.c{width:15%}td.c b{display:block;font-size:13px}td.c span{font-size:20px;font-weight:bold}
+td.s{font-size:13px;line-height:1.45;width:26%}
+.note{font-size:12px;color:#4c6272;margin-top:10px;line-height:1.5}
+</style></head><body>
+<header><h1>Where users placed each test in the card sort</h1><p>For each card: the three categories it was placed in most, and the % of participants who placed it there.</p></header>
+<nav><a href="index.html">&larr; Tree view</a><a href="network.html">Connected map</a><a href="cardsort.html">Card sort vs map</a><a href="feeds.html">Idea feeds</a></nav>
+<main>
+<div class="info"><b>Source:</b> Optimal Sort "Testing in the App Card Sort", Cards tab. 103 participants completed. Shaded cells: darker = more participants. Tests, results and checks only; vaccines, prescriptions, wellbeing apps, conditions and profile data cards are left out.</div>
+<table><thead><tr><th>Test / card</th><th>Most placed</th><th>2nd</th><th>3rd</th><th>What the data shows</th></tr></thead><tbody id="b"></tbody></table>
+<p class="note">% = number of placements &divide; 103 participants. Optimal Sort standardises categories, so a card can be counted more than once per participant; counts above 103 are shown as 100%. Categories beyond the top three are not shown. Placements are in categories participants created, standardised by Optimal Sort.</p>
+</main>
+<script>
+const G=[
+["Blood and urine tests",[
+["Liver function test",[["Tests",106],["Blood Tests",1],["Test results",1]]],
+["Kidney blood test",[["Tests",104],["Appointments",2],["Blood Tests",1]]],
+["Hepatitis B test",[["Tests",101],["Vaccinations",2],["Appointments",2]]],
+["Cholesterol blood test",[["Tests",101],["Appointments",4],["Health conditions",2]]],
+["Iron blood test",[["Tests",100],["Appointments",3],["Health conditions",2]]],
+["Urine sample test (urine culture)",[["Tests",103],["Appointments",2],["Documents",2]]],
+["Diabetes (HbA1c) blood test",[["Tests",92],["Health conditions",7],["Documents",4]]],
+["Full blood count (FBC)",[["Tests",77],["Profile",13],["Documents",8]]]]],
+["Home test kits",[
+["HIV home test",[["Tests",100],["Documents",2],["Home tests and monitoring",1]]],
+["Bowel cancer home test kit",[["Tests",98],["Health conditions",4],["Documents",3]]],
+["STI home test",[["Tests",97],["Vaccinations",3],["Appointments",2]]],
+["Hepatitis C self-test",[["Tests",96],["Health conditions",3],["Vaccinations",2]]],
+["Covid home test (lateral flow)",[["Tests",90],["Health conditions",6],["Vaccinations",3]]],
+["HPV self-sampling kit",[["Tests",88],["Health conditions",9],["Vaccinations",4]]],
+["Blood pressure monitoring at home",[["Tests",52],["Health conditions",34],["Profile",9]]],
+["Continuous Glucose Monitor (CGM)",[["Tests",58],["Health conditions",32],["Profile",7]]]]],
+["Screening",[
+["Cervical screening (smear test)",[["Tests",87],["Appointments",14],["Health conditions",4]]],
+["Breast screening (mammogram)",[["Tests",67],["Appointments",32],["Health conditions",6]]],
+["Lung health check (CT scan)",[["Tests",80],["Appointments",17],["Documents",6]]]]],
+["Imaging",[
+["Chest X-ray",[["Tests",73],["Appointments",23],["Documents",8]]],
+["MRI scan",[["Tests",70],["Appointments",27],["Documents",7]]]]],
+["Results and reports",[
+["HIV test result",[["Tests",76],["Documents",22],["test results",6]]],
+["Cervical screening result",[["Tests",59],["Documents",36],["test results",5]]],
+["Bowel screening result",[["Tests",60],["Documents",32],["test results",5]]],
+["Hearing test results (audiology)",[["Tests",68],["Documents",27],["test results",5]]],
+["Mammography report",[["Tests",50],["Documents",44],["Health conditions",5]]],
+["MRI report",[["Documents",49],["Tests",48],["test results",6]]],
+["Blood sugar (glucose) readings",[["Tests",62],["Documents",18],["Health conditions",13]]],
+["Blood pressure readings",[["Tests",50],["Profile",19],["Documents",17]]]]],
+["Pregnancy and baby checks",[
+["Newborn blood spot test",[["Tests",75],["Appointments",14],["Profile",3]]],
+["Newborn hearing check",[["Tests",45],["Appointments",35],["Documents",6]]],
+["12-week pregnancy scan",[["Tests",42],["Appointments",37],["Documents",5]]],
+["Baby's 6 to 8 week check",[["Appointments",53],["Tests",24],["Profile",7]]],
+["6 weeks postnatal check",[["Appointments",55],["Tests",24],["Profile",5]]],
+["New baby health visitor check",[["Appointments",51],["Tests",22],["Documents",9]]]]],
+["Health Check",[
+["NHS Health Check online",[["Tests",33],["Documents",19],["Appointments",18]]]]],
+["Appointments, letters and forms",[
+["Check for available GP appointment",[["Appointments",108],["Documents",3],["Doctors Appoinments",1]]],
+["Pre-operative questionnaire",[["Documents",79],["Appointments",14],["Profile",9]]],
+["Hospital appointment letter",[["Documents",63],["Appointments",49],["Apointments and letters",1]]],
+["GP appointment letter",[["Documents",55],["Appointments",53],["Profile",2]]],
+["Appointment notes",[["Documents",55],["Appointments",49],["Profile",6]]]]]
+];
+const N=103,p=n=>Math.min(100,Math.round(n/N*100));
+function say(c){const [a,b]=c;const pa=p(a[1]),pb=p(b[1]);let s;
+ if(pa>=90)s=`Almost all participants placed it in ${a[0]} (${pa}%).`;
+ else if(pa>=70)s=`Most placed it in ${a[0]} (${pa}%); ${b[0]} was next at ${pb}%.`;
+ else if(pa>=50&&pb>=30)s=`A majority chose ${a[0]} (${pa}%), with a large share in ${b[0]} (${pb}%).`;
+ else if(pa>=50)s=`A majority chose ${a[0]} (${pa}%); ${b[0]} was next at ${pb}%.`;
+ else s=`No category had a majority: ${a[0]} ${pa}%, ${b[0]} ${pb}%.`;
+ if(pa-pb<=6&&pa<90)s=`Split almost evenly between ${a[0]} (${pa}%) and ${b[0]} (${pb}%).`;
+ return s}
+let h='';
+for(const [g,rows] of G){h+=`<tr class="grp"><td colspan="5">${g}</td></tr>`;
+ for(const [n,c] of rows){const cells=c.slice(0,3).map(([k,v])=>{const q=p(v);return `<td class="c" style="background:rgba(0,94,184,${(q/100*0.55).toFixed(2)})"><b>${k}</b><span>${q}%</span></td>`}).join('');
+ h+=`<tr><td class="t">${n}</td>${cells}<td class="s">${say(c)}</td></tr>`}}
+document.getElementById('b').innerHTML=h;
+</script></body></html>
