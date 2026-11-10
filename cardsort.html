@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Card sort themes vs current IA map</title><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f0f4f5;color:#212b32}
+header{background:#005eb8;color:#fff;padding:18px 24px}header h1{margin:0;font-size:24px}header p{margin:6px 0 0;font-size:14px}
+nav{padding:10px 24px;background:#fff;border-bottom:1px solid #d8dde0}nav a{color:#005eb8;margin-right:18px;font-size:14px}
+main{max-width:1100px;margin:0 auto;padding:20px 24px}
+h2{font-size:20px;margin:28px 0 6px;border-left:6px solid #005eb8;padding-left:10px}
+.src,.cav{background:#fff;border:1px solid #d8dde0;padding:12px 16px;font-size:14px;line-height:1.5}
+.cav{background:#fff9c4;border-color:#e6d84c}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:13px;margin:8px 0}
+th,td{border:1px solid #d8dde0;padding:7px 9px;text-align:left;vertical-align:top}th{background:#e8edee}
+.on{background:#e3f1e3}.off{background:#fde6e6}.part{background:#fff3d6}
+.pill{display:inline-block;padding:1px 7px;border-radius:10px;font-size:12px;background:#e8edee;margin:1px}
+.note{font-size:12px;color:#4c6272}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+.card{background:#fff;border:1px solid #d8dde0;padding:12px 14px;font-size:13px;line-height:1.45}.card h3{margin:0 0 6px;font-size:15px}
+</style></head><body>
+<header><h1>Card sort themes vs the current IA map: test ordering, invites and screening</h1>
+<p>Facts only. This page does not judge the design; it sets out what emerged in the card sort and where those items sit on the current map.</p></header>
+<nav><a href="index.html">&larr; Tree view</a><a href="endpoints.html">By end point</a><a href="network.html">Connected map</a><a href="feeds.html">Idea feeds</a></nav>
+<main>
+<div class="src"><b>Source:</b> Optimal Sort study "Testing in the App Card Sort" (shared results). 103 of 253 participants completed; 60 cards; 782 categories created; all UK; median time 14:41. Figures below are read from the Dendrograms, Cards and Similarity matrix tabs.<br>
+<b>Scope:</b> GET stage (find, access, book or order) and items related to test ordering, invites and screening. Prescriptions, vaccines, profile data, conditions and wellbeing apps are excluded. Tracking, measurements and results items are noted only where they appear next to GET items.<br>
+<b>How to read the numbers:</b> "pairwise similarity" = % of participants who placed two cards in the same category (similarity matrix). "% in Tests" etc. = share of the 103 completers who put that card in a category named that way, after Optimal Sort's category standardisation.</div>
+
+<h2>1. What is on the map today</h2>
+<table><tr><th>Area</th><th>Items on the map</th></tr>
+<tr><td>NHS App (left)</td><td>Documents &rarr; Your documents; Hospital and specialist documents and questionnaires (notes: can contain invitations to testing/screening and results e.g. mammogram)<br>Test results &rarr; GP ordered test results; Hospital ordered test results<br>Messages (notes: can contain prep documents, invitations and results)<br>Appointments &rarr; Book a GP appointment (notes: used mainly for blood tests and cervical screening)<br><span class="pill" style="background:#ffd6d6">In build</span> Appointments &rarr; Hospital and specialist appointments &rarr; Appointment invitations &rarr; Arrange a ___ test (e.g. blood test) &rarr; Book with a clinic / Order a home test</td></tr>
+<tr><td>NHS.uk end points (right), 20 in total</td><td>
+<b>Pharmacy:</b> blood pressure check; COVID-19 lateral flow tests<br>
+<b>Home / online:</b> HIV test kit (freetesting.hiv); chlamydia kit (under 25s); hepatitis C home test; Jewish BRCA programme<br>
+<b>Clinic:</b> sexual health clinic; STI testing; cervical screening; breast screening<br>
+<b>Invited:</b> bowel; AAA; diabetic eye; NHS Health Check; pregnancy screening tests; 20-week scan; newborn blood spot; newborn hearing; newborn physical examination<br>
+<b>Optician:</b> NHS sight test</td></tr></table>
+
+<h2>2. Themes from the dendrograms, and where the items sit on the map</h2>
+<p class="note">Green = a matching item exists on the map. Amber = partly (referenced in notes or in-build journey only, or a related but not identical item). Red = no matching item on the map.</p>
+<table>
+<tr><th>Card sort theme</th><th>Card sort data</th><th>On the map today</th></tr>
+
+<tr><td><b>Blood and urine tests</b><br>Liver, kidney, hepatitis B, iron, cholesterol, HbA1c, full blood count, urine culture</td>
+<td>Dendrogram: 7 blood tests cluster at 63% agreement; urine culture joins at 62%. Pairwise similarity between these 8 cards: 67-95% (mean 84%).<br>% in Tests: liver 96, kidney 94, hep B 92, iron 91, cholesterol 92, urine 93, HbA1c 83, FBC 71. Remaining placements mostly Appointments (2-3%), Health conditions (HbA1c 7%), Documents (HbA1c 4%, FBC 6%), Profile (FBC 12%).<br>Pairwise similarity with "Check for available GP appointment": 0-4% (mean 2%). With letters/forms cards: 0-8% (mean 2%).</td>
+<td class="part">No NHS.uk end point. Mentioned in notes for Appointments &rarr; Book a GP appointment ("mainly blood tests and cervical screening"); in the in-build "Arrange a ___ test (e.g. blood test)" journey; and as GP / Hospital ordered test results.</td></tr>
+
+<tr><td><b>Home test kits</b><br>HIV, STI, hepatitis C, COVID LFT, bowel kit, HPV self-sampling kit</td>
+<td>Dendrogram: kits sit in two groups (CGM + HPV self-sampling + HIV home at 31%; home BP monitor + bowel kit + COVID LFT + STI + hep C at 43%). Pairwise similarity between the 6 kit cards: 76-88% (mean 82%).<br>% in Tests: HIV 91, STI 89, hep C 86, COVID 81, bowel 87, HPV self-sampling 78 (9% Health conditions, 4% Vaccinations).<br>Kits vs blood/urine tests: 55-87% (mean 77%).</td>
+<td class="part">On the map: HIV kit, chlamydia kit, hepatitis C home test (Home/online); COVID LFT (pharmacy); bowel (invited). Not on the map: HPV self-sampling kit, home blood pressure monitoring, CGM. In-build journey includes "Order a home test".</td></tr>
+
+<tr><td><b>Screening: taking part / booking</b><br>Smear test, breast screening (mammogram)</td>
+<td>Smear test: 79% Tests, 12% Appointments. Breast screening: 62% Tests, 27% Appointments. Pairwise similarity with "Check for available GP appointment": smear 11%, breast 27%. Smear/breast vs the 8 blood and urine cards: 55-80% (mean 67%).<br>Dendrogram: smear test pairs with Cervical screening result at 47%; breast screening sits in the baby/postnatal group at 17%.</td>
+<td class="on">Cervical screening and breast screening are NHS.uk end points (clinic channel). Appointments &rarr; Book a GP appointment notes mention cervical screening.</td></tr>
+
+<tr><td><b>Screening: results</b><br>Cervical, bowel, HIV result; mammography report</td>
+<td>% in Tests / Documents: cervical result 55 / 31; bowel result 55 / 28; HIV result 68 / 19; mammography report 46 / 38. Bowel result stays unclustered in the dendrogram. Pairwise similarity of each result with its own test: cervical 45%, bowel 48%, breast/mammography 40%, HIV 63%.</td>
+<td class="part">Test results (GP / Hospital ordered) and Documents (Hospital and specialist documents) are on the map. Screening results are not shown as a separate item. (Results are a later stage of the plan.)</td></tr>
+
+<tr><td><b>Imaging</b><br>MRI scan, chest X-ray, lung health check (CT)</td>
+<td>Dendrogram: cluster at 66%. Pairwise similarity: 69-77% (mean 74%).<br>% in Tests / Appointments: chest X-ray 67 / 21; MRI scan 65 / 22; lung health check 73 / 14.<br>Imaging vs blood tests: 51-73% (mean 65%).</td>
+<td class="off">No NHS.uk end point for these. The in-build journey covers "Arrange a ___ test" without naming imaging.</td></tr>
+
+<tr><td><b>Reports</b><br>MRI report, mammography report, hearing test results</td>
+<td>Dendrogram: cluster at 65%. % in Tests / Documents: MRI report 45 / 42; mammography report 46 / 38; hearing results 62 / 24.</td>
+<td class="part">Documents &rarr; Hospital and specialist documents (notes mention mammogram results) and Test results &rarr; Hospital ordered test results.</td></tr>
+
+<tr><td><b>Pregnancy and baby checks</b><br>12-week scan, newborn blood spot, newborn hearing, health visitor check, 6-8 week check, postnatal check</td>
+<td>Dendrogram: baby/postnatal group at 17% (includes breast screening and "Check for GP appointment"); 12-week scan and newborn blood spot stay unclustered. Pairwise similarity within the 6 cards: 42-85% (mean 65%); 6-8 week check + postnatal check 85%; health visitor + 6-8 week 78%.<br>% in Tests / Appointments: 12-week scan 40 / 31; newborn blood spot 70 / 10; newborn hearing 42 / 29; health visitor 21 / 44; 6-8 week 23 / 47; postnatal 23 / 48.<br>Pregnancy/baby cards vs blood tests: mean 35% (20-66%).</td>
+<td class="part">On the map (invited): pregnancy screening tests, 20-week scan, newborn blood spot, newborn hearing, newborn physical examination. Not on the map: 12-week scan, health visitor check, 6-8 week check, postnatal check.</td></tr>
+
+<tr><td><b>Appointments, letters and forms</b><br>Check for available GP appointment, GP letter, hospital letter, appointment notes, pre-op questionnaire</td>
+<td>Dendrogram: letters/forms group at 26% (the two letters at 73%); "Check for available GP appointment" sits in the baby/postnatal group.<br>% in Appointments / Documents: Check for GP appointment 99 / -; GP letter 48 / 50; hospital letter 48 / 53; appointment notes 46 / 49; pre-op questionnaire - / 69.<br>Pairwise similarity: letters/forms with each other 44-72% (mean 55%); letters/forms with Check for GP appointment 14-48% (mean 38%).</td>
+<td class="on">Appointments (Book a GP appointment; Hospital and specialist appointments) and Documents (Your documents; Hospital and specialist documents and questionnaires) are on the map. Messages is on the map; no matching card was tested.</td></tr>
+
+<tr><td><b>NHS Health Check online</b></td>
+<td>30% Tests, 18% Documents, 17% Health conditions; spread across 17 categories. Dendrogram: pairs with Self-refer to talking therapy and wellbeing apps at 15%. Pairwise similarity: 30% with liver function test, 33% with self-refer to talking therapy.</td>
+<td class="on">NHS Health Check is an NHS.uk end point (invited).</td></tr>
+</table>
+
+<h2>3. Cross-cutting patterns in the data</h2>
+<div class="grid">
+<div class="card"><h3>Blood tests group tightly</h3>Blood and urine tests have the highest internal pairwise similarity of any group (mean 84%, up to 95%). They are 91-96% in Tests for 6 of 8 cards.</div>
+<div class="card"><h3>Kit, blood and imaging cards overlap in "Tests"</h3>Kits vs blood: mean 77%. Imaging vs blood: mean 65%. Smear/mammogram vs blood: mean 67%. All have most placements in Tests.</div>
+<div class="card"><h3>Test vs Appointment split differs by card</h3>Home kits and blood tests: 2-3% Appointments. Smear test: 12%. Breast screening and chest X-ray: 27% and 21%. 12-week scan: 31%. 6-8 week and postnatal checks: 47-48% Appointments (more than Tests).</div>
+<div class="card"><h3>Result and report cards split between Tests and Documents</h3>Cervical result, bowel result, MRI report and mammography report each have 28-42% in Documents.</div>
+<div class="card"><h3>Booking an appointment sits apart from tests</h3>"Check for available GP appointment": 99% Appointments, 0-4% pairwise similarity with blood tests, 11% with smear test.</div>
+<div class="card"><h3>A test and its result are not grouped strongly</h3>Pairwise similarity of a test with its own result: cervical 45%, bowel 48%, breast 40%, HIV 63%.</div>
+<div class="card"><h3>Home monitoring cards split</h3>Home blood pressure monitor: 46% Tests / 33% Health conditions. CGM: 52% Tests / 31% Health conditions.</div>
+<div class="card"><h3>Closest to the map vs furthest</h3>Items with matching map entries (screening, Health Check, appointments, documents) vs items with no entry (blood and urine tests as NHS.uk end points, imaging, HPV kit, home monitoring, 12-week scan, 6-8 week and postnatal checks).</div>
+</div>
+
+<h2>4. Caveats</h2>
+<div class="cav">
+&bull; Percentages are read from Optimal Sort's standardised categories and the dendrogram; they are approximate and rounded.<br>
+&bull; "Tests" contains both GET items and RESULT items, so the % in Tests alone does not separate them.<br>
+&bull; The card sort did not test: opticians, AAA, diabetic eye screening, Jewish BRCA, pharmacy blood pressure check, 20-week scan, Messages.<br>
+&bull; Card wording (for example "home test") may have influenced grouping.<br>
+&bull; The card sort tested 60 items; the map has 20 NHS.uk end points plus NHS App areas. Only overlapping items are compared here.<br>
+&bull; The matrix gives pairwise similarity; it does not show category names chosen by participants for each cluster.
+</div>
+</main></body></html>
