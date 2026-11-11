@@ -87,4 +87,5 @@ for(const [g,rows] of G){h+=`<tr class="grp"><td colspan="5">${g}</td></tr>`;
  for(const [n,c] of rows){const cells=c.slice(0,3).map(([k,v])=>{const q=p(v);return `<td class="c" style="background:rgba(0,94,184,${(q/100*0.55).toFixed(2)})"><b>${k}</b><span>${q}%</span></td>`}).join('');
  h+=`<tr><td class="t">${n}</td>${cells}<td class="s">${say(c)}</td></tr>`}}
 document.getElementById('b').innerHTML=h;
-</script></body></html>
+</script><template id="kt"><h2>Key takeaways</h2><ul><li>Blood and urine tests and home kits: 75-100% of participants placed them in Tests.</li><li>Results, reports and letters: placements were split between Tests, Documents and Appointments.</li><li>6-8 week, postnatal and health visitor checks: about half placed them in Appointments.</li></ul></template>
+<script src="nav.js"></script></body></html>

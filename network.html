@@ -33,4 +33,5 @@ svg.querySelectorAll('.n').forEach(el=>{
   svg.querySelectorAll('.edge').forEach(e=>e.classList.toggle('on',s.has(e.dataset.a)&&s.has(e.dataset.b)))};
  el.onmouseleave=()=>{svg.classList.remove('dim');svg.querySelectorAll('.on').forEach(n=>n.classList.remove('on'))};
 });
-</script></body></html>
+</script><template id="kt"><h2>How to read this map</h2><ul><li><b>Left:</b> the four NHS App areas where tests can appear (Documents, Test results, Appointments, Messages). <b>Right:</b> 20 NHS.uk end points where a user books, orders or is offered a test.</li><li><b>Red lines</b> are in build: Appointments &rarr; Hospital and specialist appointments &rarr; Appointment invitations &rarr; Arrange a ___ test.</li><li>5 end points can be reached from two entry points; 9 are invitation-led. Blood tests have no NHS.uk end point and appear only via the Appointments, Test results and in-build routes.</li></ul></template>
+<script src="nav.js"></script></body></html>
