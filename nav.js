@@ -2,7 +2,7 @@
 var S=[
 ["Service design / mapping",[["network.html","Connected map (as-is)"],["endpoints.html","By end point"],["tree.html","Tree view"]]],
 ["User research",[["cardsort.html","Card sort vs map"],["placement.html","Where users placed each test"]]],
-["Interaction design",[["feeds.html","Idea feeds"]]]
+["Interaction design",[["feeds.html","Idea feeds"],["prototype-versions.html","Prototype IA versions"]]]
 ];
 var here=location.pathname.split('/').pop()||'index.html';
 var css='#sn{background:#003087;color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:14px;position:relative;z-index:50}'+

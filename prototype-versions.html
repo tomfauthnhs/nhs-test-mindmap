@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NHS App: prototype IA versions</title>
+<link rel="stylesheet" href="prototype-versions.css">
+<script src="prototype-versions.js" defer></script>
+<script src="nav.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#diagram">Skip to diagram</a>
+<header>
+  <p class="eyebrow">Test ordering / interaction design</p>
+  <h1>Prototype IA versions</h1>
+  <p class="intro">Feed diagrams of the native prototype: where things live, what moves, and what changes between versions.</p>
+  <nav aria-label="Related diagrams"><a href="feeds.html">Idea feeds</a></nav>
+</header>
+<main>
+  <section class="controls" aria-label="Choose a version and comparison">
+    <div>
+      <label for="version">Prototype version</label>
+      <select id="version"></select>
+    </div>
+    <div>
+      <label for="baseline">Highlight changes against</label>
+      <select id="baseline">
+        <option value="previous">Previous version</option>
+        <option value="asis">Original as-is layout</option>
+        <option value="basis">Design basis / parent concept</option>
+      </select>
+    </div>
+    <button id="print" type="button">Print / save as PDF</button>
+  </section>
+  <section class="context" aria-labelledby="version-title">
+    <h2 id="version-title"></h2>
+    <p id="version-summary"></p>
+    <p id="lineage" class="lineage"></p>
+    <p id="comparison-label" role="status"></p>
+  </section>
+  <div class="legend" aria-label="Diagram legend">
+    <span><i class="swatch blue"></i>Retained in this comparison</span>
+    <span><i class="swatch purple"></i>New, renamed, moved or updated</span>
+    <span><i class="swatch conditional"></i>Conditional (see label)</span>
+    <span>Changes also have text labels; colour is not the only signal.</span>
+  </div>
+  <p class="scope">IA overview, not a screen-by-screen journey or a clinical service specification. Cards show destinations and key content, not app UI colours. Conditional items are shown with their conditions rather than hidden. The agreed as-is comparison baseline shares v1's journey detail: only the Test results → Tests name changes in v1. It is not a full audit of changes from the live NHS App.</p>
+  <div id="diagram" tabindex="-1"></div>
+  <section class="changes" aria-labelledby="changes-heading">
+    <h2 id="changes-heading">What changed?</h2>
+    <p id="changes-description"></p>
+    <div class="table-wrap" tabindex="0" role="region" aria-label="Version changes table">
+      <table>
+        <thead><tr><th scope="col">Item</th><th scope="col">Change</th><th scope="col">From</th><th scope="col">To</th></tr></thead>
+        <tbody id="changes-body"></tbody>
+      </table>
+    </div>
+  </section>
+  <aside class="notes" aria-labelledby="notes-heading">
+    <h2 id="notes-heading">Reading this map</h2>
+    <ul id="version-notes"></ul>
+  </aside>
+  <noscript><p>This page needs JavaScript to draw the version diagrams. Enable JavaScript and reload.</p></noscript>
+</main>
+<footer>Source: the local native NHS App prototype, branch ia-nav-test-ordering-tom. These are prototype structures, not the live NHS App. No publishing is performed by this page.</footer>
+</body>
+</html>
