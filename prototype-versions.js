@@ -90,10 +90,10 @@ const baseRoots = [
 
 const VERSIONS = [{
   id:'v1', name:'v1', parent:'Original as-is layout', roots:copy(baseRoots),
-  summary:'The light-touch baseline: Test results becomes Tests. The rest of the map stays blue and white.',
+  summary:'Test results becomes Tests, with new test-ordering, tracking and screening journeys. Measurements is new in Profile. Pre-existing hubs, including Appointments, stay blue and white.',
   notes:[
-    'Colouring follows the requested v1 convention: only the Tests card name is purple. This is an IA comparison baseline, not a claim that the prototype contains no other journey enhancements.',
-    'The baseline includes the existing test ordering and tracking journeys so later versions can show where those journeys move.',
+    'Purple marks the renamed Tests hub, new Get a test journeys (including screening programmes), test order tracking and Measurements in Profile. Appointments already existed and is not a new hub.',
+    'The as-is comparison excludes these new features. Later versions retain them in blue when unchanged from the previous version, or show them in purple when compared with as-is.',
     'Dashed cards state when an item appears. PKB means Patients Know Best. Placeholders are labelled; the diagram does not make them working services.',
     'Shared profile switching, help links, NHS information links, organ donation promotion and feedback are not repeated inside every hub. This overview focuses on the primary IA and test-ordering content.'
   ]
@@ -399,6 +399,9 @@ VERSIONS.forEach(version => {
   }
   find(version.roots, 'home').layout = layout;
 });
+
+// Keep the implemented version maps intact; these features were absent before v1.
+['get-test', 'test-tracking', 'measurements'].forEach(id => take(baseRoots, id));
 
 function flatten(roots) {
   const nodes = new Map();
